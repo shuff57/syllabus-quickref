@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Algebra 2: Quick Reference</title><style>/* annotated — a marked-up ledger in academic serif: open ruled masthead, each
+   section a card ruled down its left edge, headings on a hairline rather than in
+   a filled bar, and the hand used only as annotation over that grid.
+
+   It must not converge on `spec` again. Both were once the same layout with the
+   fonts swapped, which is two themes doing one theme's work: the compartment
+   BOX and the filled header BAR belong to spec, the left RULE and the open
+   heading belong here. Tokens listed in spec.css apply; diagrams.py paints from
+   them. */
+@page { size: letter; margin: 0; }
+:root {
+  --wedgwood:#7A2626; --wedgwood-deep:#5C1C1C;
+  --parchment:#FFFFFF; --ivory:#F3F1EA; --warm-sand:#CFCBBE;
+  --ink:#191C21; --charcoal:#464C55; --olive:#5A616B; --stone:#868C96;
+  --border-cream:#F3F1EA; --border-warm:#CFCBBE; --ring-warm:#CFCBBE;
+  --sheet:#FBFAF6; --white:#FFFFFF; --line:#CFCBBE; --hair:#E3E0D5; --block:#F3F1EA;
+  --gold:#7A5C1F; --hi:#FFE580;
+  --serif:"Bodoni Moda","Bodoni MT","Didot","Playfair Display",Georgia,serif;
+  --text:Charter,"Bitstream Charter","Iowan Old Style",Georgia,"Times New Roman",serif;
+  --mono:ui-monospace,"Cascadia Mono",Menlo,Consolas,monospace;
+  --hand:"Caveat","Segoe Script","Bradley Hand",cursive;
+}
+* { box-sizing:border-box; }
+body {
+  font:9.2pt/1.44 var(--text); color:var(--ink); background:var(--sheet);
+  margin:0 auto; padding:0.38in; max-width:8.5in;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+
+.head { display:flex; align-items:flex-start; justify-content:space-between; gap:16pt;
+        border-bottom:2.5pt solid var(--ink); padding-bottom:8pt; margin-bottom:11pt; }
+.headline { flex:1; min-width:0; }
+h1 { font:400 32pt/.96 var(--serif); margin:0; letter-spacing:-.02em; }
+.sub { display:grid; grid-template-columns:repeat(auto-fit,minmax(112pt,1fr));
+       gap:0 16pt; border-top:.75pt solid var(--line);
+       border-bottom:.75pt solid var(--line); margin:9pt 0 0; }
+/* min-width:0 and the wrap: a long email in a fixed grid cell otherwise runs
+   straight over the value in the next cell, which is not visible until someone
+   with a long address prints it */
+.sub span { padding:6pt 0 7pt; min-width:0; overflow-wrap:anywhere;
+            font:700 11pt/1.25 var(--serif); color:var(--ink); }
+/* "Instructor: R. Calderon" -> label stacked above the value */
+.sub em { display:block; font:400 6.6pt/1.5 var(--mono); font-style:normal;
+          letter-spacing:.15em; text-transform:uppercase; color:var(--stone);
+          margin-bottom:2pt; }
+/* flex child, never position:absolute — absolute reserves no space, so the note
+   overflows itself and lands on whatever section sits underneath it */
+.sticky { flex:0 0 auto; width:104pt; padding:7pt 9pt 8pt; margin-top:3pt;
+          background:var(--hi); transform:rotate(2.2deg); box-shadow:2pt 3pt 6pt -2pt #00000030;
+          font:11pt/1.14 var(--hand); color:var(--ink); }
+.sticky b { display:block; font-size:13.5pt; color:var(--wedgwood); margin-bottom:1pt; }
+
+.cols { column-count:2; column-gap:0.28in; counter-reset:sec; }
+section { break-inside:avoid; margin:0 0 11pt; counter-increment:sec;
+          border-left:2.5pt solid var(--wedgwood); background:none;
+          padding:0 0 2pt; }
+h2 { font:400 13.5pt/1.1 var(--serif); margin:0 0 6pt; padding:0 9pt 4pt;
+     border-bottom:.75pt solid var(--line); letter-spacing:-.01em;
+     break-after:avoid; display:flex; align-items:baseline; gap:7pt; }
+h2::before { content:counter(sec,decimal-leading-zero);
+             font:400 7.4pt/1 var(--mono); color:var(--gold);
+             letter-spacing:.12em; flex-shrink:0; }
+section > :not(h2) { padding-left:9pt; padding-right:9pt; }
+section > :last-child { padding-bottom:4pt; }
+
+ul { margin:0; padding:0; list-style:none; }
+li { position:relative; padding-left:10pt; margin-bottom:3.4pt; color:var(--charcoal);
+     break-inside:avoid; }
+li::before { content:""; position:absolute; left:0; top:.62em;
+             width:5pt; height:.9pt; background:var(--gold); }
+p { margin:0 0 4pt; color:var(--charcoal); }
+strong { font-weight:700; color:var(--ink); }
+a { color:var(--wedgwood-deep); text-decoration:none; }
+svg.fig { display:block; width:100%; height:auto; margin:2pt 0 5pt; break-inside:avoid; }
+
+/* ---- the three hand marks: ==swiped==  ((circled))  ~in hand~ ----
+   This theme is the rigid grid with a hand laid over it, so these are the
+   whole point of it. Used sparingly: a page where everything is highlighted
+   has highlighted nothing. */
+.hi { position:relative; isolation:isolate; padding:0 .16em;
+      color:var(--ink); font-weight:700; }
+/* multiply, so the band lies over the ink the way a real marker does */
+.hi::before { content:""; position:absolute; z-index:-1; inset:.02em 0;
+              background:var(--hi); mix-blend-mode:multiply;
+              border-radius:2px 6px 3px 7px; transform:rotate(-.5deg); }
+.circ { font:700 12pt/1 var(--hand); color:var(--wedgwood);
+        position:relative; padding:0 5pt; display:inline-block; margin-right:2pt; }
+.circ::before { content:""; position:absolute; inset:-3pt -2pt;
+                border:1.2pt solid var(--wedgwood);
+                border-radius:50% 46% 52% 48% / 48% 52% 46% 54%;
+                transform:rotate(-2deg); }
+.hand { font:12pt/1 var(--hand); color:var(--gold);
+        display:inline-block; transform:rotate(-1.6deg); }
+
+table { border-collapse:collapse; width:100%; margin:2pt 0 4pt;
+        font-variant-numeric:tabular-nums; }
+th { text-align:left; font:400 6.2pt/1.4 var(--mono); text-transform:uppercase;
+     letter-spacing:.13em; color:var(--stone); border-bottom:.75pt solid var(--line);
+     padding:3pt 6pt; }
+td { padding:3pt 6pt; border-bottom:.75pt solid var(--hair); color:var(--charcoal); }
+tr:last-child td { border-bottom:0; }
+
+.note { column-span:all; margin-top:2pt; padding-top:6pt;
+        border-top:.75pt solid var(--line); font:italic 9pt/1.5 var(--text);
+        color:var(--olive); }
+@media print { .note { page-break-inside:avoid; } }
+
+/* The button rides on the closing note's own line, so it needs no rule or
+   spacing of its own and cannot add height to the sheet. Each theme already
+   styles .note; only the layout is added here. */
+.note { display: flex; align-items: center; justify-content: space-between;
+        gap: 12pt; }
+.export-btn {
+  font: 600 8pt/1 var(--sans, system-ui, -apple-system, "Segoe UI", sans-serif);
+  letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+  color: var(--ink, #1a1a1a); background: var(--white, #fff);
+  border: 1px solid var(--ink, #1a1a1a); border-radius: 3px;
+  padding: 6pt 11pt; cursor: pointer; flex: 0 0 auto;
+}
+.export-btn:hover { background: var(--ink, #1a1a1a); color: var(--white, #fff); }
+.export-btn:focus-visible { outline: 2px solid var(--wedgwood, #4e6e8e);
+                            outline-offset: 2px; }
+/* The button is not part of the handout. */
+@media print { .export-btn { display: none !important; } }
+</style></head><body><header class="head"><div class="headline"><h1>Algebra 2: Quick Reference</h1><p class="sub"><span><em>Instructor</em>R. Calderon</span><span><em>Contact</em>r.calderon@ridgeview.example.edu</span><span><em>Room</em>214</span><span><em>Periods</em>2, 4, 6</span></p></div></header><div class="cols"><section><h2>Contact</h2><ul><li><strong>Email:</strong> r.calderon@ridgeview.example.edu, answered within <span class="hi">2 school days</span></li><li><strong>Extra help:</strong> Room 214, Tuesday and Thursday, 3:15 to 4:00</li><li><strong>Math Lab:</strong> library, Monday to Thursday, 3:15 to 5:00 <span class="hand">walk in</span></li><li><strong>Class site:</strong> classroom.example.edu/mat-210</li></ul></section><section><h2>Bring every day</h2><ul><li>Notebook for this class only, a pencil, a charged Chromebook</li><li>Scientific calculator, graphing ones live in Room 214</li></ul></section><section><h2>Your grade</h2><svg class="fig" viewBox="0 0 300 77.00" preserveAspectRatio="xMinYMin meet" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif"><rect x="0.00" y="0" width="165.00" height="22" fill="var(--wedgwood)"/><text x="82.50" y="14.2" text-anchor="middle" font-size="9" font-weight="600" fill="var(--parchment)">55%</text><rect x="165.00" y="0" width="60.00" height="22" fill="var(--warm-sand)"/><text x="195.00" y="14.2" text-anchor="middle" font-size="9" font-weight="600" fill="var(--ink)">20%</text><rect x="225.00" y="0" width="45.00" height="22" fill="var(--border-cream)"/><text x="247.50" y="14.2" text-anchor="middle" font-size="9" font-weight="600" fill="var(--ink)">15%</text><rect x="270.00" y="0" width="30.00" height="22" fill="var(--border-cream)"/><rect x="0" y="0" width="300" height="22" fill="none" stroke="var(--ring-warm)"/><rect x="0" y="28.5" width="7" height="7" fill="var(--wedgwood)" stroke="var(--ring-warm)" stroke-width="0.5"/><text x="12" y="35" font-size="8.5" fill="var(--charcoal)">Tests and finals</text><text x="300" y="35" font-size="8.5" font-weight="600" text-anchor="end" fill="var(--ink)">55%</text><rect x="0" y="40" width="7" height="7" fill="var(--warm-sand)" stroke="var(--ring-warm)" stroke-width="0.5"/><text x="12" y="46.5" font-size="8.5" fill="var(--charcoal)">Quizzes and checkpoints</text><text x="300" y="46.5" font-size="8.5" font-weight="600" text-anchor="end" fill="var(--ink)">20%</text><rect x="0" y="51.5" width="7" height="7" fill="var(--border-cream)" stroke="var(--ring-warm)" stroke-width="0.5"/><text x="12" y="58" font-size="8.5" fill="var(--charcoal)">Homework and classwork</text><text x="300" y="58" font-size="8.5" font-weight="600" text-anchor="end" fill="var(--ink)">15%</text><rect x="0" y="63" width="7" height="7" fill="var(--border-cream)" stroke="var(--ring-warm)" stroke-width="0.5"/><text x="12" y="69.5" font-size="8.5" fill="var(--charcoal)">Group problem sets</text><text x="300" y="69.5" font-size="8.5" font-weight="600" text-anchor="end" fill="var(--ink)">10%</text></svg><p>Scale: A 90+ · B 80+ · C 70+ · D 60+, <span class="circ">nothing is rounded</span></p></section><section><h2>Turning work in late</h2><ul><li><span class="hi">10% off per school day</span>, down to a floor of 50%</li><li>Nothing after the grading period ends</li><li><strong>Extension tokens:</strong> 4 a semester, filed by the due date, worth 2 school days</li><li>One per assignment, never on tests or quizzes</li></ul></section><section><h2>When you are absent</h2><ul><li><strong>Excused:</strong> as many days to make up as you missed</li><li><strong>Missed a test:</strong> take it the day you return, 7:20 to 8:00</li><li><strong>Planned, 3 or more days:</strong> attendance office, 5 school days ahead</li></ul></section><section><h2>Tests</h2><ul><li><strong>Retakes:</strong> one per unit test, none on quizzes or finals</li><li>Turn in the unit homework and a correction form</li><li>Before school, within 10 school days</li><li>Higher score counts, <span class="hi">capped at 85%</span></li></ul></section><section><h2>In the room</h2><ul><li>Phones, watches, and earbuds in the caddy, powered off</li><li>A warning, then I hold it, then the assistant principal</li><li>Water only</li><li><strong>Cheating or AI-written work:</strong> <span class="circ">zero, a call home, a referral to admin</span></li><li>AI for practice or explanation, never for what you turn in</li></ul></section><section><h2>Dates to know</h2><ul><li>Back-to-School Night: September 10, 2026</li><li>Finals: December 15 to 18 and June 8 to 11</li><li>Open House: March 18, 2027</li></ul></section><section><h2>For parents</h2><ul><li><strong>Grades:</strong> ParentVue, updated weekly by Friday</li><li><strong>Reach me:</strong> email, answered in 2 school days</li><li>Progress reports at the 6 and 12 week marks</li></ul></section></div><p class="note"><span>The full syllabus has the complete policies. This page is the short version.</span><button type="button" id="export-pdf" class="export-btn">Save as PDF</button></p>
+<script>
+document.getElementById("export-pdf").addEventListener("click", function () {
+  window.print();
+});
+</script>
+</body></html>

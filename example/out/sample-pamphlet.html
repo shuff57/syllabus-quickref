@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Algebra 2: Quick Reference</title><style>
+@page { size: 11in 8.5in; margin: 0; }
+:root {
+  --wedgwood: #4e6e8e; --wedgwood-deep: #3d5a80;
+  --parchment: #f5f4ed; --ivory: #faf9f5; --warm-sand: #e8e6dc;
+  --ink: #141413; --charcoal: #3d3d3a; --olive: #504e49; --stone: #6b6a64;
+  --border-cream: #f0eee6; --border-warm: #e8e6dc; --ring-warm: #d1cfc5;
+  --serif: "Source Serif 4", "Source Serif Pro", Charter, Georgia, "Times New Roman", serif;
+  --sans: Inter, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #d8d6cc; font: 11pt/1.55 var(--sans); color: var(--ink);
+       -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.howto { max-width: 11in; margin: 14px auto 6px; padding: 10px 14px;
+         background: var(--ivory); border: 1px solid var(--ring-warm);
+         font-size: 10pt; color: var(--olive); }
+.howto strong { color: var(--ink); font-weight: 600; }
+.sheet { width: 11in; height: 8.5in; margin: 0 auto 14px; background: var(--parchment);
+         display: grid; grid-template-columns: repeat(3, 1fr); position: relative; }
+.panel { padding: 0.5in 0.38in; overflow: hidden; position: relative; }
+.panel + .panel { border-left: 1px dashed var(--ring-warm); }   /* fold guide */
+
+/* ---- cover ---------------------------------------------------------- */
+.cover { display: flex; flex-direction: column; }
+.eyebrow { font: 500 8pt/1.4 var(--sans); text-transform: uppercase;
+           letter-spacing: 1.2px; color: var(--wedgwood); }
+.cover h1 { font: 500 34pt/1.06 var(--serif); margin: 24pt 0 0; letter-spacing: -0.7px; }
+.cover .rule { height: 2px; background: var(--wedgwood); width: 54pt; margin: 14pt 0; }
+.cover .who { font-size: 10pt; color: var(--olive); }
+.cover .foot { margin-top: auto; padding-top: 10pt; border-top: 1px solid var(--border-warm);
+               font-size: 8.5pt; color: var(--stone); }
+
+/* ---- sections ------------------------------------------------------- */
+.panel section { margin: 0 0 20pt; break-inside: avoid; }
+.panel h2 { font: 500 15pt/1.2 var(--serif); margin: 0 0 7pt; padding-bottom: 4pt;
+            border-bottom: 1px solid var(--border-warm); }
+.panel h2 .num { font: 500 9.5pt/1.4 var(--serif); color: var(--wedgwood);
+                 margin-right: 6pt; }
+ul { margin: 0; padding: 0; list-style: none; }
+li { position: relative; padding-left: 13pt; margin-bottom: 5pt; color: var(--charcoal); }
+li::before { content: "\2013"; position: absolute; left: 0; color: var(--wedgwood); }
+p { margin: 0 0 4pt; color: var(--charcoal); }
+strong { font-weight: 600; color: var(--ink); }
+
+/* ---- weight bar: a percentage table read at a glance ----------------- */
+.bar { display: flex; height: 30pt; margin: 4pt 0 7pt; border: 1px solid var(--ring-warm); }
+.seg { display: flex; align-items: center; justify-content: center;
+       font: 600 9pt/1 var(--sans); font-variant-numeric: tabular-nums; }
+.seg.lead { background: var(--wedgwood); color: var(--parchment); }
+.seg.mid  { background: var(--warm-sand); color: var(--charcoal); }
+.seg.rest { background: var(--ivory); color: var(--charcoal); }
+.legend { font-size: 10pt; color: var(--charcoal); }
+.legend div { display: flex; align-items: baseline; gap: 5pt; margin-bottom: 2pt; }
+.legend i { width: 7pt; height: 7pt; flex: none; }
+.legend .pct { margin-left: auto; font-variant-numeric: tabular-nums; color: var(--ink);
+               font-weight: 600; }
+.scale { margin-top: 7pt; padding-top: 6pt; border-top: 1px solid var(--border-cream);
+         font-size: 10.5pt; color: var(--charcoal); font-variant-numeric: tabular-nums; }
+
+/* A running foot anchored to the bottom of every panel. Panels rarely fill to
+   the same depth, and without a line to close them the shorter ones read as
+   cut off rather than as deliberate margin. */
+.panel { display: flex; flex-direction: column; }
+.foot-run { margin-top: auto; padding-top: 9pt; border-top: 1px solid var(--border-cream);
+            font: 500 8pt/1.4 var(--sans); text-transform: uppercase;
+            letter-spacing: 1.2px; color: var(--stone); display: flex; }
+.foot-run span { margin-left: auto; color: var(--wedgwood); }
+
+/* ---- back panel ------------------------------------------------------ */
+.back { display: flex; flex-direction: column; }
+.back .note { margin-top: auto; padding-top: 9pt; border-top: 1px solid var(--border-warm);
+              font-size: 8.5pt; color: var(--stone); }
+@media print { body { background: none; } .howto { display: none; }
+               .sheet { margin: 0; page-break-after: always; }
+               .panel + .panel { border-left: none; } }
+</style></head><body><div class="howto"><strong>Printing.</strong> Landscape letter, double sided, flipped on the <strong>short edge</strong>. Fold the right third in, then the left third over it. Sheet one is the outside (cover, back, flap), sheet two is the inside spread. This banner does not print.</div><div class="sheet"><div class="panel cover"><div class="eyebrow">Quick Reference</div><h1>Algebra 2</h1><div class="rule"></div><div class="who">Instructor: R. Calderon · Contact: r.calderon@ridgeview.example.edu · Room: 214 · Periods: 2, 4, 6</div><div class="foot">The short version. The full syllabus has the complete policies.</div></div><div class="panel back"><section><h2><span class="num">09</span>For parents</h2><ul><li><strong>Grades:</strong> ParentVue, updated weekly by Friday</li><li><strong>Reach me:</strong> email, answered in 2 school days</li><li>Progress reports at the 6 and 12 week marks</li></ul></section><div class="note"><strong>Algebra 2</strong><br>Instructor: R. Calderon · Contact: r.calderon@ridgeview.example.edu · Room: 214 · Periods: 2, 4, 6<br><br>The full syllabus has the complete policies. This page is the short version.</div></div><div class="panel"><section><h2><span class="num">01</span>Contact</h2><ul><li><strong>Email:</strong> r.calderon@ridgeview.example.edu, answered within <span class="hi">2 school days</span></li><li><strong>Extra help:</strong> Room 214, Tuesday and Thursday, 3:15 to 4:00</li><li><strong>Math Lab:</strong> library, Monday to Thursday, 3:15 to 5:00 <span class="hand">walk in</span></li><li><strong>Class site:</strong> classroom.example.edu/mat-210</li></ul></section><section><h2><span class="num">02</span>Bring every day</h2><ul><li>Notebook for this class only, a pencil, a charged Chromebook</li><li>Scientific calculator, graphing ones live in Room 214</li></ul></section><div class="foot-run">Algebra 2<span>Start here</span></div></div></div><div class="sheet"><div class="panel"><section><h2><span class="num">03</span>Your grade</h2><div class="bar"><div class="seg lead" style="width:55.0000%">55%</div><div class="seg mid" style="width:20.0000%">20%</div><div class="seg rest" style="width:15.0000%">15%</div><div class="seg rest" style="width:10.0000%">10%</div></div><div class="legend"><div><i style="background:var(--wedgwood)"></i>Tests and finals<span class="pct">55%</span></div><div><i style="background:var(--warm-sand)"></i>Quizzes and checkpoints<span class="pct">20%</span></div><div><i style="background:var(--ivory)"></i>Homework and classwork<span class="pct">15%</span></div><div><i style="background:var(--ivory)"></i>Group problem sets<span class="pct">10%</span></div></div><p class="scale">Scale: A 90+ · B 80+ · C 70+ · D 60+, <span class="circ">nothing is rounded</span></p></section><section><h2><span class="num">04</span>Turning work in late</h2><ul><li><span class="hi">10% off per school day</span>, down to a floor of 50%</li><li>Nothing after the grading period ends</li><li><strong>Extension tokens:</strong> 4 a semester, filed by the due date, worth 2 school days</li><li>One per assignment, never on tests or quizzes</li></ul></section><div class="foot-run">Algebra 2<span>1 of 3</span></div></div><div class="panel"><section><h2><span class="num">05</span>When you are absent</h2><ul><li><strong>Excused:</strong> as many days to make up as you missed</li><li><strong>Missed a test:</strong> take it the day you return, 7:20 to 8:00</li><li><strong>Planned, 3 or more days:</strong> attendance office, 5 school days ahead</li></ul></section><section><h2><span class="num">06</span>Tests</h2><ul><li><strong>Retakes:</strong> one per unit test, none on quizzes or finals</li><li>Turn in the unit homework and a correction form</li><li>Before school, within 10 school days</li><li>Higher score counts, <span class="hi">capped at 85%</span></li></ul></section><div class="foot-run">Algebra 2<span>2 of 3</span></div></div><div class="panel"><section><h2><span class="num">07</span>In the room</h2><ul><li>Phones, watches, and earbuds in the caddy, powered off</li><li>A warning, then I hold it, then the assistant principal</li><li>Water only</li><li><strong>Cheating or AI-written work:</strong> <span class="circ">zero, a call home, a referral to admin</span></li><li>AI for practice or explanation, never for what you turn in</li></ul></section><section><h2><span class="num">08</span>Dates to know</h2><ul><li>Back-to-School Night: September 10, 2026</li><li>Finals: December 15 to 18 and June 8 to 11</li><li>Open House: March 18, 2027</li></ul></section><div class="foot-run">Algebra 2<span>3 of 3</span></div></div></div></body></html>
