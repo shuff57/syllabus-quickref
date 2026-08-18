@@ -8,7 +8,7 @@ what makes the cutting safe: nothing is lost, and the compliance language is no
 longer standing between a family and the answer they came for.
 
 <p align="center">
-<a href="example/out/shot-annotated.png"><img src="example/out/thumb-annotated.png" width="560" alt="the annotated theme"></a>
+<a href="example/out/shot-annotated.png"><img src="example/out/shot-annotated.png" width="560" alt="the annotated theme"></a>
 </p>
 <p align="center"><b><code>annotated</code></b> — the one to start with</p>
 
