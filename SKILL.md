@@ -259,7 +259,7 @@ python scripts/render.py <course>-quickref.md --theme annotated \
 | Theme | What it is |
 |---|---|
 | `bookshelf` | The default. Parchment, one Wedgwood accent, the house theme below. |
-| `annotated` | The ledger. Open ruled masthead, each section ruled down its left edge, Bodoni headings over Charter, hand used only as annotation. |
+| `annotated` | Crisp boxed compartments, Bodoni headings over Charter, hand used only as annotation: the corner note, a highlighter, an aside. |
 | `spec` | The technical one. Monospace, coded section IDs, boxed compartments under a filled header bar. No corner note and no handwriting: the marks are set in the page's own face. |
 | `markedup` | Hand-drawn frames keeping `spec`'s header bars and coded IDs, in academic serif. The weight bar is coloured in by hand. |
 | `whiteboard` | Pens and whiteboard markers on white. Drawn frames, cursive heads, checkbox bullets, a hand-coloured weight bar, and no corner note. |
@@ -269,11 +269,12 @@ Print each after a content change: the hand-drawn themes carry larger type and
 run out of page soonest, and a two-page "one-pager" is the failure to watch for.
 
 Writing another: a theme is `scripts/themes/NAME.css` redefining the token block
-at the top of `spec.css`. Change the structure too, not only the tokens and the
-font stack. `annotated` began as `spec` with the fonts swapped and printed as
-the same page twice, which nobody noticed until the two were laid side by side:
-the compartment box, the header bar, the masthead cell strip and the ID chip are
-what a reader recognises, so a new theme has to differ in at least one of them. `diagrams.py` paints the weight bar from those same
+at the top of `spec.css`. The compartment box, the header bar, the masthead cell
+strip and the ID chip are what a reader recognises a theme by, and `annotated`
+and `spec` deliberately share all four, separating on face and hand instead:
+Charter with a sticky note and cursive asides against monospace with neither.
+That is the closest two themes should sit. A third one built on the same four
+would not read as a third theme, so change one of them as well. `diagrams.py` paints the weight bar from those same
 token names, so the figure recolours itself and never needs touching. A theme
 that needs an SVG filter ships `NAME.defs.html` beside it, injected into the top
 of `<body>`. Two rules learned the hard way and worth keeping:

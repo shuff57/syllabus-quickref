@@ -1,12 +1,12 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Algebra 2: Quick Reference</title><style>/* annotated — a marked-up ledger in academic serif: open ruled masthead, each
-   section a card ruled down its left edge, headings on a hairline rather than in
-   a filled bar, and the hand used only as annotation over that grid.
+<!doctype html><html><head><meta charset="utf-8"><title>Algebra 2: Quick Reference</title><style>/* annotated — crisp compartments in academic serif, with the hand used only as
+   annotation over the grid: the sticky note, and a highlighter on what matters.
+   Tokens listed in spec.css apply here too; diagrams.py paints from them.
 
-   It must not converge on `spec` again. Both were once the same layout with the
-   fonts swapped, which is two themes doing one theme's work: the compartment
-   BOX and the filled header BAR belong to spec, the left RULE and the open
-   heading belong here. Tokens listed in spec.css apply; diagrams.py paints from
-   them. */
+   It shares a skeleton with `spec`: the same boxed compartments, header bars
+   and ID chips. That is deliberate. What separates them is the face and the
+   hand — Charter with a sticky note and cursive asides here, monospace with
+   neither there — so if you change one, put the two side by side afterwards
+   and check they still read as two themes. */
 @page { size: letter; margin: 0; }
 :root {
   --wedgwood:#7A2626; --wedgwood-deep:#5C1C1C;
@@ -31,23 +31,22 @@ body {
         border-bottom:2.5pt solid var(--ink); padding-bottom:8pt; margin-bottom:11pt; }
 .headline { flex:1; min-width:0; }
 h1 { font:400 32pt/.96 var(--serif); margin:0; letter-spacing:-.02em; }
-/* Cells size to their contents, not to equal fractions: see the note in
-   spec.css. An address is three times the width of a room number, and equal
-   columns either overran the neighbouring value or broke the address in half. */
-.sub { display:flex; flex-wrap:nowrap; gap:0 22pt;
-       border-top:.75pt solid var(--line);
-       border-bottom:.75pt solid var(--line); margin:9pt 0 0; }
-/* An address never breaks: the cell keeps it whole and the ones after it move
-   over. If the whole byline outgrows the sheet a cell wraps to a second row,
-   which still reads, where half an email on each line does not. */
-/* the byline shrinks by wrapping a value, never by dropping a cell onto a
-   second row: with a sticky note taking width, "reply within" fell off the
-   line while the class cell sat on one long line. Tokens that must not be
-   split carry .nb from render.py. */
-.sub span { flex:0 0 auto; white-space:nowrap; padding:6pt 0 7pt;
+/* Cells size to their contents rather than to equal fractions. An address is
+   three times the width of a room number, so equal columns either overran the
+   next cell or split the email across two lines, and a split address stops
+   looking like an address. nowrap keeps the byline on one row; only the longest
+   value may wrap, which render.py marks .wide. */
+.sub { display:flex; flex-wrap:nowrap; border:.75pt solid var(--line);
+       background:var(--white); margin:9pt 0 0; }
+.sub > span { flex:0 0 auto; white-space:nowrap; padding:7pt 10pt 8pt;
+            border-right:.75pt solid var(--line);
             font:700 11pt/1.25 var(--serif); color:var(--ink); }
+.sub > span.wide { flex:0 1 auto; min-width:0; white-space:normal; }
+.sub > span:last-child { border-right:0; }
 /* "Instructor: R. Calderon" -> label stacked above the value */
-.sub span.wide { flex:0 1 auto; min-width:0; white-space:normal; }
+/* render.py marks tokens that must not be split (a time range, an address).
+   The rule lives here because the shared base CSS keeps getting rewritten. */
+.sub .nb { white-space:nowrap; padding:0; border:0; }
 .sub em { display:block; font:400 6.6pt/1.5 var(--mono); font-style:normal;
           letter-spacing:.15em; text-transform:uppercase; color:var(--stone);
           margin-bottom:2pt; }
@@ -59,17 +58,17 @@ h1 { font:400 32pt/.96 var(--serif); margin:0; letter-spacing:-.02em; }
 .sticky b { display:block; font-size:13.5pt; color:var(--wedgwood); margin-bottom:1pt; }
 
 .cols { column-count:2; column-gap:0.28in; counter-reset:sec; }
-section { break-inside:avoid; margin:0 0 11pt; counter-increment:sec;
-          border-left:2.5pt solid var(--wedgwood); background:none;
-          padding:0 0 2pt; }
-h2 { font:400 13.5pt/1.1 var(--serif); margin:0 0 6pt; padding:0 9pt 4pt;
-     border-bottom:.75pt solid var(--line); letter-spacing:-.01em;
-     break-after:avoid; display:flex; align-items:baseline; gap:7pt; }
+section { break-inside:avoid; margin:0 0 9pt; counter-increment:sec;
+          border:.75pt solid var(--line); background:var(--white); }
+h2 { font:400 13pt/1.1 var(--serif); margin:0 0 7pt; padding:4pt 9pt;
+     background:var(--block); border-bottom:.75pt solid var(--line);
+     letter-spacing:-.01em; break-after:avoid;
+     display:flex; align-items:center; gap:6pt; }
 h2::before { content:counter(sec,decimal-leading-zero);
-             font:400 7.4pt/1 var(--mono); color:var(--gold);
-             letter-spacing:.12em; flex-shrink:0; }
+             font:700 6.2pt/1 var(--mono); color:var(--white); background:var(--ink);
+             padding:1.5pt 4pt; flex-shrink:0; }
 section > :not(h2) { padding-left:9pt; padding-right:9pt; }
-section > :last-child { padding-bottom:4pt; }
+section > :last-child { padding-bottom:8pt; }
 
 ul { margin:0; padding:0; list-style:none; }
 li { position:relative; padding-left:10pt; margin-bottom:3.4pt; color:var(--charcoal);
@@ -85,9 +84,9 @@ svg.fig { display:block; width:100%; height:auto; margin:2pt 0 5pt; break-inside
    This theme is the rigid grid with a hand laid over it, so these are the
    whole point of it. Used sparingly: a page where everything is highlighted
    has highlighted nothing. */
-/* box-decoration-break:clone, so a swipe that runs past the end of a line is
-   painted on both fragments. The absolutely-positioned band this replaced drew
-   one rectangle across the whole run and left the second line unmarked. */
+/* box-decoration-break, so a swipe that wraps is painted once per line. The
+   absolutely-positioned band this replaced covered the union of both lines,
+   which reads as a filled block rather than a marker stroke. */
 .hi { padding:0 .16em; color:var(--ink); font-weight:700;
       background:var(--hi); border-radius:2px 6px 3px 7px;
       -webkit-box-decoration-break:clone; box-decoration-break:clone; }
@@ -109,8 +108,8 @@ td { padding:3pt 6pt; border-bottom:.75pt solid var(--hair); color:var(--charcoa
 tr:last-child td { border-bottom:0; }
 
 .note { column-span:all; margin-top:2pt; padding-top:6pt;
-        border-top:.75pt solid var(--line); font:italic 9pt/1.5 var(--text);
-        color:var(--olive); }
+        border-top:2.5pt solid var(--ink); font:6.2pt/1.5 var(--mono);
+        letter-spacing:.07em; text-transform:uppercase; color:var(--stone); }
 @media print { .note { page-break-inside:avoid; } }
 
 /* The button rides on the closing note's own line, so it needs no rule or

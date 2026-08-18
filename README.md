@@ -96,7 +96,7 @@ a real teacher, which is the point: it is there to be copied.
 | Theme | What it is |
 |---|---|
 | `bookshelf` | The default. Parchment, one blue accent, rules instead of frames. |
-| **`annotated`** | **The one to start with.** The ledger. Open ruled masthead, each section ruled down its left edge, Bodoni over Charter. |
+| **`annotated`** | **The one to start with.** Crisp boxed compartments in academic serif, with the hand kept to annotation over the grid: the corner note, a highlighter, an aside. |
 | `spec` | The technical one. Monospace, coded section IDs, boxed compartments under filled header bars. No corner note, no handwriting. |
 | `markedup` | Hand-drawn frames in academic serif, keeping `spec`'s ID chips. The grade bar is coloured in by hand. |
 | `whiteboard` | Pens and markers on white. Drawn frames, cursive headings, checkbox bullets, a hand-coloured grade bar, no corner note. |
@@ -111,9 +111,11 @@ Three marks a teacher actually makes on a page survive into every output:
 `==highlighted==`, `((circled))`, and `~~an aside in hand~~`.
 
 Writing another theme: drop a `NAME.css` in `scripts/themes/` redefining the
-token block at the top of `spec.css`. Change the structure too, not only the
-colours and the fonts. `annotated` started life as `spec` with the typefaces
-swapped and printed as the same page twice.
+token block at the top of `spec.css`. `annotated` and `spec` share a skeleton on
+purpose and separate on face and hand — Charter with a sticky note and cursive
+asides, monospace with neither — which is about as close as two themes can sit
+before they stop being two. Anything nearer than that wants a structural
+difference as well: a frame, a header bar, a masthead that is not a cell strip.
 
 ## License
 
