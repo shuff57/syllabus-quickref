@@ -62,8 +62,14 @@ a { color: var(--wedgwood-deep); text-decoration: none; }
 .sticky { display: none; }   /* no hand in this theme; the note has nowhere to go */
 /* The three hand marks, held to this theme's one accent rather than a marker set. */
 .hi { background: #f3e7c0; padding: 0 .18em; border-radius: 2px; color: var(--ink);
-      font-weight: 600; }
-.circ { border: 1px solid var(--wedgwood); border-radius: 10px; padding: 0 5pt;
+      font-weight: 600;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+/* A ring is a hand mark and this theme has no hand, so the ring becomes a rule
+   under the words. The pill it replaces broke in half whenever the phrase
+   wrapped — "nothing is" in one open-ended capsule, "rounded" in another — and
+   a circled clause is exactly the kind of long phrase that wraps. An underline
+   is drawn per line, so it survives the break and still reads as ringed. */
+.circ { border-bottom: 1.5px solid var(--wedgwood); padding-bottom: 1px;
         color: var(--wedgwood-deep); font-weight: 600; }
 .hand { font-style: italic; color: var(--wedgwood-deep); }
 @media print { .note { page-break-inside: avoid; } }

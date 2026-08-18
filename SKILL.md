@@ -208,6 +208,12 @@ of its line into handwriting, and neither the checker nor the renderer would say
 so. Doubling costs one character and removes the failure. GFM reads `~~` as
 strikethrough, which this dialect does not have, so nothing is shadowed.
 
+Each theme translates the three into its own register, and the two without a
+hand translate hardest: `bookshelf` and `spec` set the aside in italic rather
+than script, and `bookshelf` draws the ring as a rule under the words, because
+the bordered pill it used before broke in half whenever the phrase wrapped, and
+a circled clause is long enough that it usually does.
+
 `render.py` warns on an unclosed mark, with a line number, before it writes
 anything. An odd `==` otherwise reaches the handout as a literal `==` and the
 first person to notice is whoever printed thirty copies.
