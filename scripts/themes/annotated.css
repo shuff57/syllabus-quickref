@@ -31,13 +31,13 @@ body {
         border-bottom:2.5pt solid var(--ink); padding-bottom:8pt; margin-bottom:11pt; }
 .headline { flex:1; min-width:0; }
 h1 { font:400 32pt/.96 var(--serif); margin:0; letter-spacing:-.02em; }
-.sub { display:grid; grid-template-columns:repeat(auto-fit,minmax(112pt,1fr));
-       gap:0 16pt; border-top:.75pt solid var(--line);
+/* Cells size to their contents, not to equal fractions: see the note in
+   spec.css. An address is three times the width of a room number, and equal
+   columns either overran the neighbouring value or broke the address in half. */
+.sub { display:flex; flex-wrap:wrap; gap:0 22pt;
+       border-top:.75pt solid var(--line);
        border-bottom:.75pt solid var(--line); margin:9pt 0 0; }
-/* min-width:0 and the wrap: a long email in a fixed grid cell otherwise runs
-   straight over the value in the next cell, which is not visible until someone
-   with a long address prints it */
-.sub span { padding:6pt 0 7pt; min-width:0; overflow-wrap:anywhere;
+.sub span { flex:0 0 auto; padding:6pt 0 7pt;
             font:700 11pt/1.25 var(--serif); color:var(--ink); }
 /* "Instructor: R. Calderon" -> label stacked above the value */
 .sub em { display:block; font:400 6.6pt/1.5 var(--mono); font-style:normal;
@@ -77,12 +77,12 @@ svg.fig { display:block; width:100%; height:auto; margin:2pt 0 5pt; break-inside
    This theme is the rigid grid with a hand laid over it, so these are the
    whole point of it. Used sparingly: a page where everything is highlighted
    has highlighted nothing. */
-.hi { position:relative; isolation:isolate; padding:0 .16em;
-      color:var(--ink); font-weight:700; }
-/* multiply, so the band lies over the ink the way a real marker does */
-.hi::before { content:""; position:absolute; z-index:-1; inset:.02em 0;
-              background:var(--hi); mix-blend-mode:multiply;
-              border-radius:2px 6px 3px 7px; transform:rotate(-.5deg); }
+/* box-decoration-break:clone, so a swipe that runs past the end of a line is
+   painted on both fragments. The absolutely-positioned band this replaced drew
+   one rectangle across the whole run and left the second line unmarked. */
+.hi { padding:0 .16em; color:var(--ink); font-weight:700;
+      background:var(--hi); border-radius:2px 6px 3px 7px;
+      -webkit-box-decoration-break:clone; box-decoration-break:clone; }
 .circ { font:700 12pt/1 var(--hand); color:var(--wedgwood);
         position:relative; padding:0 5pt; display:inline-block; margin-right:2pt; }
 .circ::before { content:""; position:absolute; inset:-3pt -2pt;

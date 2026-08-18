@@ -7,7 +7,21 @@ The full syllabus stays exactly as it is. This is a companion page, which is
 what makes the cutting safe: nothing is lost, and the compliance language is no
 longer standing between a family and the answer they came for.
 
-![the sample rendered in the annotated theme](example/out/shot-annotated.png)
+<table>
+<tr>
+<td align="center" width="33%"><a href="example/out/shot-bookshelf.png"><img src="example/out/thumb-bookshelf.png" width="250" alt="the bookshelf theme"></a><br><code>bookshelf</code></td>
+<td align="center" width="33%"><a href="example/out/shot-annotated.png"><img src="example/out/thumb-annotated.png" width="250" alt="the annotated theme"></a><br><code>annotated</code></td>
+<td align="center" width="33%"><a href="example/out/shot-spec.png"><img src="example/out/thumb-spec.png" width="250" alt="the spec theme"></a><br><code>spec</code></td>
+</tr>
+<tr>
+<td align="center"><a href="example/out/shot-markedup.png"><img src="example/out/thumb-markedup.png" width="250" alt="the markedup theme"></a><br><code>markedup</code></td>
+<td align="center"><a href="example/out/shot-whiteboard.png"><img src="example/out/thumb-whiteboard.png" width="250" alt="the whiteboard theme"></a><br><code>whiteboard</code></td>
+<td></td>
+</tr>
+</table>
+
+*One made-up syllabus, cut to one page, in all five themes. Click any of them for
+the full-size render, and see `example/` for the syllabus it came from.*
 
 ## What it does
 
@@ -78,13 +92,19 @@ a real teacher, which is the point: it is there to be copied.
 
 `--theme NAME`, or `--list-themes` to see what is installed.
 
-| Theme | What it is | Preview |
-|---|---|---|
-| `bookshelf` | The default. Parchment, one blue accent, rules instead of frames. | [png](example/out/shot-bookshelf.png) |
-| `annotated` | The ledger. Open ruled masthead, each section ruled down its left edge, Bodoni over Charter. | [png](example/out/shot-annotated.png) |
-| `spec` | The technical one. Monospace, coded section IDs, boxed compartments under filled header bars. | [png](example/out/shot-spec.png) |
-| `markedup` | Hand-drawn frames in academic serif, keeping `spec`'s ID chips. | [png](example/out/shot-markedup.png) |
-| `whiteboard` | Pens and markers on white. Drawn frames, cursive headings, checkbox bullets. | [png](example/out/shot-whiteboard.png) |
+| Theme | What it is |
+|---|---|
+| `bookshelf` | The default. Parchment, one blue accent, rules instead of frames. |
+| `annotated` | The ledger. Open ruled masthead, each section ruled down its left edge, Bodoni over Charter. |
+| `spec` | The technical one. Monospace, coded section IDs, boxed compartments under filled header bars. No corner note, no handwriting. |
+| `markedup` | Hand-drawn frames in academic serif, keeping `spec`'s ID chips. |
+| `whiteboard` | Pens and markers on white. Drawn frames, cursive headings, checkbox bullets. |
+
+The corner note is `--sticky "Read this first|the syllabus is longer. this is
+the part you need."`. `annotated` and the two drawn themes place it top right.
+`bookshelf` and `spec` take the flag and ignore it, because neither carries a
+hand anywhere else and one rotated cursive note on an otherwise plain page
+reads as a mistake.
 
 Three marks a teacher actually makes on a page survive into every output:
 `==highlighted==`, `((circled))`, and `~~an aside in hand~~`.

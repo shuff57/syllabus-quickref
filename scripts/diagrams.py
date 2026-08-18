@@ -68,7 +68,9 @@ def weight_bar(rows):
         fill = tone.get(i, REST)
         parts.append('<rect x="%.2f" y="0" width="%.2f" height="%g" fill="%s"/>'
                      % (x, w, BAR, fill))
-        if w > 34:                       # only label a segment wide enough to hold it
+        # 34 was wide enough to drop a 10% share off a 300pt bar, which is
+        # exactly the segment a student needs to see labelled
+        if w > 5.6 * len("%g%%" % val) + 4:
             parts.append('<text x="%.2f" y="%g" text-anchor="middle" font-size="9" '
                          'font-weight="600" fill="%s">%g%%</text>'
                          % (x + w / 2, BAR / 2 + 3.2,

@@ -85,10 +85,9 @@ tr:last-child td { border-bottom:0; }
 
 /* ---- hand marks: ==swiped==  ((circled))  ~in hand~ ---- */
 .sub em { font-style:normal; font-weight:400; color:var(--stone); margin-right:4pt; }
-.hi { position:relative; isolation:isolate; padding:0 .16em; color:var(--ink); font-weight:700; }
-.hi::before { content:""; position:absolute; z-index:-1; inset:.02em 0;
-              background:var(--hi); mix-blend-mode:multiply;
-              border-radius:2px 6px 3px 7px; transform:rotate(-.5deg); }
+.hi { padding:0 .16em; color:var(--ink); font-weight:700;
+      background:var(--hi); border-radius:2px 6px 3px 7px;
+      -webkit-box-decoration-break:clone; box-decoration-break:clone; }
 .circ { font:700 12.5pt/1 var(--hand); color:var(--wedgwood); position:relative;
         padding:0 5pt; display:inline-block; margin-right:2pt; }
 .circ::before { content:""; position:absolute; inset:-3pt -2pt; border:1.3pt solid var(--wedgwood);

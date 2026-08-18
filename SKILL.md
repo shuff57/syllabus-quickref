@@ -235,7 +235,11 @@ first.
 #### Themes
 
 `--theme NAME` picks the look. `--list-themes` prints what is installed, and
-`--sticky "Head|body"` adds the corner note the themes place top right.
+`--sticky "Head|body"` adds the corner note, which the hand themes and
+`annotated` place top right. `bookshelf` and `spec` accept the flag and ignore
+it: neither has a hand anywhere else on the page, so a single rotated note in a
+cursive face would be the only one, and it reads as a mistake rather than a
+mark.
 
 ```bash
 python scripts/render.py <course>-quickref.md --theme annotated \
@@ -247,7 +251,7 @@ python scripts/render.py <course>-quickref.md --theme annotated \
 |---|---|
 | `bookshelf` | The default. Parchment, one Wedgwood accent, the house theme below. |
 | `annotated` | The ledger. Open ruled masthead, each section ruled down its left edge, Bodoni headings over Charter, hand used only as annotation. |
-| `spec` | The technical one. Monospace, coded section IDs, boxed compartments under a filled header bar, spec bar masthead. |
+| `spec` | The technical one. Monospace, coded section IDs, boxed compartments under a filled header bar. No corner note and no handwriting: the marks are set in the page's own face. |
 | `markedup` | Hand-drawn frames keeping `spec`'s header bars and coded IDs, in academic serif. |
 | `whiteboard` | Pens and whiteboard markers on white. Drawn frames, cursive heads, checkbox bullets. |
 
