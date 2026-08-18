@@ -235,11 +235,12 @@ first.
 #### Themes
 
 `--theme NAME` picks the look. `--list-themes` prints what is installed, and
-`--sticky "Head|body"` adds the corner note, which the hand themes and
-`annotated` place top right. `bookshelf` and `spec` accept the flag and ignore
-it: neither has a hand anywhere else on the page, so a single rotated note in a
-cursive face would be the only one, and it reads as a mistake rather than a
-mark.
+`--sticky "Head|body"` adds the corner note, which `annotated` and `markedup`
+place top right. `bookshelf`, `spec` and `whiteboard` accept the flag and ignore
+it, for opposite reasons: the first two carry no hand anywhere else, so one
+rotated cursive note would be the only mark on the page and reads as a mistake,
+while `whiteboard` is already entirely in a hand and a second one is a mark too
+many.
 
 ```bash
 python scripts/render.py <course>-quickref.md --theme annotated \
@@ -252,8 +253,8 @@ python scripts/render.py <course>-quickref.md --theme annotated \
 | `bookshelf` | The default. Parchment, one Wedgwood accent, the house theme below. |
 | `annotated` | The ledger. Open ruled masthead, each section ruled down its left edge, Bodoni headings over Charter, hand used only as annotation. |
 | `spec` | The technical one. Monospace, coded section IDs, boxed compartments under a filled header bar. No corner note and no handwriting: the marks are set in the page's own face. |
-| `markedup` | Hand-drawn frames keeping `spec`'s header bars and coded IDs, in academic serif. |
-| `whiteboard` | Pens and whiteboard markers on white. Drawn frames, cursive heads, checkbox bullets. |
+| `markedup` | Hand-drawn frames keeping `spec`'s header bars and coded IDs, in academic serif. The weight bar is coloured in by hand. |
+| `whiteboard` | Pens and whiteboard markers on white. Drawn frames, cursive heads, checkbox bullets, a hand-coloured weight bar, and no corner note. |
 
 All five hold one letter page for a quick reference of the size step 3 targets.
 Print each after a content change: the hand-drawn themes carry larger type and
@@ -273,6 +274,13 @@ of `<body>`. Two rules learned the hard way and worth keeping:
   both a 200pt frame and a 6pt checkbox: the scale that makes the frame read as
   hand-drawn shreds the checkbox into noise. Use a second, gentler filter for
   small marks, and below roughly 8pt use none at all, just uneven corner radii.
+- **A filter alone does not read as hand-coloured.** The weight bar's segments
+  carry `class="seg"` and the surround `class="frame"`, so a theme can roughen
+  them, and roughening alone still looked printed. What sells it is the fill
+  falling short of the ruled line, a rounded corner, a degree of tilt alternating
+  segment to segment, and turbulence stretched higher across the grain than along
+  it, the way a marker leaves a ragged top edge and a straight side. The 7pt
+  legend swatches, `class="key"`, take none of it.
 - **The corner note is a flex child, never `position: absolute`.** Absolute
   reserves no space, so the note overflows itself and lands on top of whatever
   section sits underneath it.

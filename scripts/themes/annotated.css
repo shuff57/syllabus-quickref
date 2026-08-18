@@ -37,7 +37,10 @@ h1 { font:400 32pt/.96 var(--serif); margin:0; letter-spacing:-.02em; }
 .sub { display:flex; flex-wrap:wrap; gap:0 22pt;
        border-top:.75pt solid var(--line);
        border-bottom:.75pt solid var(--line); margin:9pt 0 0; }
-.sub span { flex:0 0 auto; padding:6pt 0 7pt;
+/* An address never breaks: the cell keeps it whole and the ones after it move
+   over. If the whole byline outgrows the sheet a cell wraps to a second row,
+   which still reads, where half an email on each line does not. */
+.sub span { flex:0 0 auto; white-space:nowrap; padding:6pt 0 7pt;
             font:700 11pt/1.25 var(--serif); color:var(--ink); }
 /* "Instructor: R. Calderon" -> label stacked above the value */
 .sub em { display:block; font:400 6.6pt/1.5 var(--mono); font-style:normal;

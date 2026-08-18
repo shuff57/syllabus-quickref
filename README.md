@@ -97,14 +97,14 @@ a real teacher, which is the point: it is there to be copied.
 | `bookshelf` | The default. Parchment, one blue accent, rules instead of frames. |
 | `annotated` | The ledger. Open ruled masthead, each section ruled down its left edge, Bodoni over Charter. |
 | `spec` | The technical one. Monospace, coded section IDs, boxed compartments under filled header bars. No corner note, no handwriting. |
-| `markedup` | Hand-drawn frames in academic serif, keeping `spec`'s ID chips. |
-| `whiteboard` | Pens and markers on white. Drawn frames, cursive headings, checkbox bullets. |
+| `markedup` | Hand-drawn frames in academic serif, keeping `spec`'s ID chips. The grade bar is coloured in by hand. |
+| `whiteboard` | Pens and markers on white. Drawn frames, cursive headings, checkbox bullets, a hand-coloured grade bar, no corner note. |
 
 The corner note is `--sticky "Read this first|the syllabus is longer. this is
-the part you need."`. `annotated` and the two drawn themes place it top right.
-`bookshelf` and `spec` take the flag and ignore it, because neither carries a
-hand anywhere else and one rotated cursive note on an otherwise plain page
-reads as a mistake.
+the part you need."`. `annotated` and `markedup` place it top right.
+`bookshelf`, `spec` and `whiteboard` take the flag and ignore it: the first two
+carry no hand anywhere else, so one rotated cursive note would be the only mark
+on the page, and `whiteboard` is already all hand and does not need a second.
 
 Three marks a teacher actually makes on a page survive into every output:
 `==highlighted==`, `((circled))`, and `~~an aside in hand~~`.

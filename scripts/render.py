@@ -86,6 +86,7 @@ a { color: var(--wedgwood-deep); text-decoration: none; }
    themes can render it as spec cells. This theme keeps it as running text, so
    the separators have to come back. */
 .sub span + span::before { content: "\\00b7"; margin: 0 6pt; color: var(--ring-warm); }
+.sub span { white-space: nowrap; }   /* an address wraps whole or not at all */
 .sub em { font-style: normal; color: var(--stone); margin-right: 4pt; }
 .head { display: block; }
 .sticky { display: none; }   /* no hand in this theme; the note has nowhere to go */

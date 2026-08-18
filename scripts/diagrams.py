@@ -66,8 +66,11 @@ def weight_bar(rows):
     for i, (label, val) in enumerate(data):
         w = W * val / 100.0
         fill = tone.get(i, REST)
-        parts.append('<rect x="%.2f" y="0" width="%.2f" height="%g" fill="%s"/>'
-                     % (x, w, BAR, fill))
+        # classed so a theme can redraw the bar without diagrams.py knowing how:
+        # the hand themes roughen .seg and .frame and leave .key alone, since a
+        # 7pt swatch under the same displacement is noise rather than a swatch
+        parts.append('<rect class="seg" x="%.2f" y="0" width="%.2f" height="%g" '
+                     'fill="%s"/>' % (x, w, BAR, fill))
         # 34 was wide enough to drop a 10% share off a 300pt bar, which is
         # exactly the segment a student needs to see labelled
         if w > 5.6 * len("%g%%" % val) + 4:
@@ -76,13 +79,13 @@ def weight_bar(rows):
                          % (x + w / 2, BAR / 2 + 3.2,
                             "var(--parchment)" if i == order[0] else "var(--ink)", val))
         x += w
-    parts.append('<rect x="0" y="0" width="%g" height="%g" fill="none" '
-                 'stroke="var(--ring-warm)"/>' % (W, BAR))
+    parts.append('<rect class="frame" x="0" y="0" width="%g" height="%g" '
+                 'fill="none" stroke="var(--ring-warm)"/>' % (W, BAR))
 
     y = BAR + 13
     for i, (label, val) in enumerate(data):
-        parts.append('<rect x="0" y="%g" width="7" height="7" fill="%s" '
-                     'stroke="var(--ring-warm)" stroke-width="0.5"/>'
+        parts.append('<rect class="key" x="0" y="%g" width="7" height="7" '
+                     'fill="%s" stroke="var(--ring-warm)" stroke-width="0.5"/>'
                      % (y - 6.5, tone.get(i, REST)))
         parts.append('<text x="12" y="%g" font-size="8.5" fill="var(--charcoal)">%s</text>'
                      % (y, esc(label)))

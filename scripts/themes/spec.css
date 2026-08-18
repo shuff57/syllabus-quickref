@@ -36,7 +36,11 @@ h1 { font:400 30pt/.94 var(--serif); margin:0; letter-spacing:-.02em; }
    wraps a whole cell onto a second row instead of breaking a value. */
 .sub { display:flex; flex-wrap:wrap; border:.75pt solid var(--line);
        background:var(--block); margin:9pt 0 0; }
-.sub span { flex:0 0 auto; padding:7pt 9pt 8pt; border-right:.75pt solid var(--line);
+/* An address never breaks: the cell keeps it whole and the ones after it move
+   over. If the whole byline outgrows the sheet a cell wraps to a second row,
+   which still reads, where half an email on each line does not. */
+.sub span { flex:0 0 auto; white-space:nowrap; padding:7pt 9pt 8pt;
+            border-right:.75pt solid var(--line);
             font-size:10.5pt; font-weight:700; color:var(--ink); line-height:1.25; }
 .sub span:last-child { border-right:0; }
 .sub em { display:block; font:400 6.4pt/1.5 var(--mono); font-style:normal;
