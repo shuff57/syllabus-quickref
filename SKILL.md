@@ -225,12 +225,14 @@ The line under the title is one `·`-separated list. A segment written
 the value as a spec cell and the rest print inline:
 
 ```markdown
-Instructor: R. Calderon · Contact: r.calderon@ridgeview.example.edu · Periods: 2, 4, 6 · Reply within: 2 school days
+Instructor: R. Calderon · Contact: r.calderon@ridgeview.example.edu · Periods: 2, 4, 6
 ```
 
-Putting contact and reply time here as well as under **Contact** is not
-redundancy worth cutting. It is the masthead, and it is where someone looks
-first.
+Keep it to who, where and when: name, contact, and when the class meets. Reply
+time, office hours and the rest belong under **Contact**, one screen down. Every
+extra segment is width taken from the others, and the first thing a crowded
+byline does is wrap the class times into a second line or push the last cell off
+the row entirely.
 
 #### Themes
 
